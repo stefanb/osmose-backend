@@ -19,7 +19,7 @@
 ##                                                                       ##
 ###########################################################################
 
-from Analyser import Analyser
+from analysers.Analyser import Analyser
 
 import psycopg2
 import psycopg2.extras
@@ -472,7 +472,7 @@ WHERE
 
 
 ###########################################################################
-from Analyser import TestAnalyser
+from analysers.Analyser import TestAnalyser
 
 class TestAnalyserOsmosis(TestAnalyser):
     @classmethod
