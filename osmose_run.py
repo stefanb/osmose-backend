@@ -64,8 +64,8 @@ except ImportError:
 class analyser_config:
   pass
 
-def get_version():
-    cmd  = ["git", "describe"]
+def get_version(branch="HEAD"):
+    cmd  = ["git", "describe", branch]
     try:
         proc = subprocess.Popen(cmd, stdout=subprocess.PIPE)
         version = proc.stdout.readlines()[0].strip()
@@ -448,6 +448,9 @@ if __name__ == "__main__":
 
     old_path = list(sys.path)
     sys.path.insert(0, analysers_path)
+
+    for br in ("master", "HEAD"):
+        logger.log("osmose backend version %-9s: %s" % ("(" + br + ")" , get_version(br)))
 
     logger.log(logger.log_av_v+"loading analyses "+logger.log_ap)
     analysers = {}
